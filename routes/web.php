@@ -13,5 +13,6 @@ Route::post('/login', [WelcomeController::class, "findUser"])->name("loginAction
 
 Route::get("/register", [WelcomeController::class, "register"])->name('registerPage');
 Route::post("/register", [AccountController::class, "store"])->name('registerAction');
+Route::post('/logout', [AccountController::class, "logout"])->name('logout')
 
 ?>

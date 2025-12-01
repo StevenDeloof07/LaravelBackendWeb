@@ -19,8 +19,9 @@ class WelcomeController extends Controller
         ]);
 
         if (Auth::attempt($authenticated)) {
-            redirect()->to(route("home"));
+            return redirect()->to("/");
         }
+        dd("Login failed");
     }
 
     function register() {

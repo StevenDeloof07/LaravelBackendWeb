@@ -25,6 +25,17 @@ class AccountController extends Controller
 
         Auth::login($user);
 
-        redirect()->to(route("home"));
+        redirect()->to("/");
+    }
+
+    function logout(Request $request) {
+        #regeneration of csrf token and invalidation from session suggested by https://laravel.com/docs/12.x/authentication
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect(route("home"));
     }
 }
