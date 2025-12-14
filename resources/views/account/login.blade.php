@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    @vite(['resources/css/welcome.css'])
 </head>
 <body>
     <div>Gelieve in te loggen met uw user mail</div>
@@ -24,5 +25,9 @@
     </form>
 
     Nog geen account? <a href="{{ route("registerPage") }}">Registreer hier</a>
+
+    @if (session("failMessage"))
+        <div class="error-message">{{ session("failMessage") }}</div>
+    @endif
 </body>
 </html>
