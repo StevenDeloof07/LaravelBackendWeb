@@ -10,8 +10,9 @@ use App\Models\User;
 class WelcomeController extends Controller
 {
     function index() {
-        if (empty(Auth::user() )) return view("account.login");
-        return view('welcome');
+        $user = Auth::user();
+        if (empty($user)) return view("account.login");
+        return view('welcome')->with(['isAdmin' => $user->isAdmin()]);
     }
 
     function findUser(Request $request) {
