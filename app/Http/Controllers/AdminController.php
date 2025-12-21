@@ -28,9 +28,10 @@ class AdminController extends Controller
                 'id' => $currentUser['id'],
                 'name' => $currentUser['name'],
                 'email' => $currentUser['email'],
-                'isAdmin' => $this->isAdmin($currentUser)
+                'isAdmin' => $currentUser->isAdmin()
             ]);
         }
+
 
         $data = [
             'name' => $user['name'], 
