@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    
+    You are an admin!
 </body>
 </html>
