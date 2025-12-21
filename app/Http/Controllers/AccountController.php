@@ -25,7 +25,7 @@ class AccountController extends Controller
 
         Auth::login($user);
 
-        redirect()->to("/");
+        return redirect()->to("/");
     }
 
     function logout(Request $request) {
