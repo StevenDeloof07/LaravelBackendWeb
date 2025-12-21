@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+@extends("layouts.app")
+
+@section("title")
+    Gebruikerslijst
+@endsection
+
+@section("extraHeaders")
     @vite("resources/css/admin.css")
-</head>
-<body>
+@endsection
+
+@section("content")
     Dag {{ $name }}! Dit is een lijst van alle gebruikers.
 
     <table>
@@ -22,5 +24,4 @@
             </tr>
         @endforeach
     </table>
-</body>
-</html>
+@endsection

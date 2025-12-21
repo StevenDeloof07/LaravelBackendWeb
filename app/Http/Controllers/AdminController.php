@@ -35,8 +35,11 @@ class AdminController extends Controller
 
         $data = [
             'name' => $user['name'], 
-            'users' => $usersData
+            'users' => $usersData,
+            'isAdmin' => true
         ];
+
+        
 
         return view("account.admin.users")->with($data);
     }
