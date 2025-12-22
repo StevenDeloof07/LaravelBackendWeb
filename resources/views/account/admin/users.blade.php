@@ -9,9 +9,11 @@
 @endsection
 
 @section("content")
-    Dag {{ $name }}! Dit is een lijst van alle gebruikers.
+    Dag {{ $name }}! 
 
-    <table>
+    <div class="flex-container">
+        @include('layouts.admin.nav')
+        <table class="main-info">
         <tr>
             <th>Naam</th><th>Mail</th><th>Is een Admin</th><th>Acties</th>
         </tr>
