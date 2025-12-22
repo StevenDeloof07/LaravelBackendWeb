@@ -18,7 +18,7 @@ class AdminController extends Controller
         $user = Auth::user();
         if (!$this->checkUser()) return redirect()->back();
 
-        $allUsers = User::all();
+        $allUsers = User::where('id', "!=", $user->id)->get();
         $usersData = [];
 
         foreach($allUsers as $currentUser) {
@@ -65,7 +65,17 @@ class AdminController extends Controller
     function remove(Request $request, $id) {
         if (!$this->checkUser()) return redirect()->back();
 
-        dd($id);
+
+        if (empty(User::where("id", $id)->first())) 
+            return redirect()->back()->with(["error" => "Deze gebruiker bestaat niet"]);
+
+        $admin = Admin::where("user_id", $id)->first();
+
+        if (empty($admin))
+            return redirect()->back()->with(['error' => "Deze gebruiker lijkt geen admin te zijn"]);
+
+        $admin->delete();
+        return redirect()->back()->with(["message" => "De adminrechten van de gebruiker zijn succesvol verwijdert"]);
     }
 
     function checkUser() {
