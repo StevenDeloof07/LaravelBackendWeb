@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\User;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +45,21 @@ class AdminController extends Controller
     function create(Request $request) {
         if (!$this->checkUser()) return redirect()->back();
 
-        dd($request['user_id']);
+        $id = $request['user_id'];
+
+
+        if (empty(User::where("id", $id)->first())) 
+            return redirect()->back()->with(["error" => "Deze gebruiker bestaat niet"]);
+
+        if (!empty(Admin::where("user_id", $id)->first()))
+            return redirect()->back()->with(['error' => "Deze gebruiker lijkt al een admin te zijn"]);
+
+        Admin::create([
+            "user_id" => $id
+        ]);
+
+
+        return redirect()->back()->with(["message" => "Gebruiker is nu een admin"]);
     }
 
     function remove(Request $request, $id) {

@@ -13,7 +13,7 @@
 
     <table>
         <tr>
-            <th>Naam</th><th>Mail</th><th>Is een Admin</th>
+            <th>Naam</th><th>Mail</th><th>Is een Admin</th><th>Acties</th>
         </tr>
 
         @foreach ($users as $user)
@@ -34,4 +34,11 @@
             </tr>
         @endforeach
     </table>
+
+    @session("message") 
+        {{ $value }}
+    @endif
+    @session("error") 
+        <div class="error-message">{{ $value }}</div>
+    @endif
 @endsection
