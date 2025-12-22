@@ -18,7 +18,7 @@
             <th>Naam</th><th>Mail</th><th>Is een Admin</th><th>Acties</th>
         </tr>
 
-        @foreach ($users as $user)
+            @foreach ($users as $user)
             <tr>
                 <td>{{ $user['name'] }}</td>
                 <td>{{ $user['email'] }}</td>
@@ -34,9 +34,9 @@
                     </form>
                 </td>
             </tr>
-        @endforeach
-    </table>
-
+            @endforeach
+        </table>
+    </div>
     @session("message") 
         {{ $value }}
     @endif

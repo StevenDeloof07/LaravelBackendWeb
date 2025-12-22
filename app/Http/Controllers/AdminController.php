@@ -10,13 +10,9 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    private function isAdmin($user) {
-        return !empty(DB::table('admin')->where("user_id", $user["id"])->first());
-    }
 
     function index() {
         $user = Auth::user();
-        if (!$this->checkUser()) return redirect()->back();
 
         $allUsers = User::where('id', "!=", $user->id)->get();
         $usersData = [];
@@ -43,7 +39,6 @@ class AdminController extends Controller
     }
 
     function create(Request $request) {
-        if (!$this->checkUser()) return redirect()->back();
 
         $id = $request['user_id'];
 
@@ -63,8 +58,6 @@ class AdminController extends Controller
     }
 
     function remove(Request $request, $id) {
-        if (!$this->checkUser()) return redirect()->back();
-
 
         if (empty(User::where("id", $id)->first())) 
             return redirect()->back()->with(["error" => "Deze gebruiker bestaat niet"]);
@@ -78,8 +71,4 @@ class AdminController extends Controller
         return redirect()->back()->with(["message" => "De adminrechten van de gebruiker zijn succesvol verwijdert"]);
     }
 
-    function checkUser() {
-        $user = Auth::user();
-        return ($this->isAdmin($user));
-    }
 }

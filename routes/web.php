@@ -16,11 +16,14 @@ Route::get("/register", [WelcomeController::class, "register"])->name('registerP
 Route::post("/register", [AccountController::class, "store"])->name('registerAction');
 Route::post('/logout', [AccountController::class, "logout"])->name('logout');
 
-
-Route::get("/manage", [AdminController::class, "index"])->name("adminManagement");
-Route::post("/manage", [AdminController::class, "create"])->name("makeAdmin");
-Route::delete("/manage/{id}", [AdminController::class, "remove"])->name("removeAdmin");
-
-Route::post('/manage/create', [AdminController::class, "createNewUser"])
+//Gemini used for middleware, and prefix logic. Routes were written without ai.
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::prefix('manage')->group(function () {
+        Route::get("/", [AdminController::class, "index"])->name("adminManagement");
+        Route::post("/", [AdminController::class, "create"])->name("makeAdmin");
+        Route::delete("/{id}", [AdminController::class, "remove"])->name("removeAdmin");
+        Route::post('/create', [AdminController::class, "createNewUser"]);
+    });
+})
 
 ?>
