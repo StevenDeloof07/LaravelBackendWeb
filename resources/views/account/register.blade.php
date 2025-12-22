@@ -30,6 +30,6 @@
         <input type="submit" value="Registreer">
     </form>
 
-    Al een account? <a href="{{ route("login") }}">Login hier</a>
+    Al een account? <a href="{{ route("login") }}">Hier aanmelden</a>
 </body>
 </html>

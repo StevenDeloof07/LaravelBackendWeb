@@ -15,10 +15,7 @@ class AdminController extends Controller
 
     function index() {
         $user = Auth::user();
-
-        if (empty($user)) return view("account.login");
-
-        if ($this->isAdmin($user));
+        if ($this->checkUser()) return redirect()->back();
 
         $allUsers = User::all();
         $usersData = [];
@@ -42,5 +39,18 @@ class AdminController extends Controller
         
 
         return view("account.admin.users")->with($data);
+    }
+
+    function create(Request $request) {
+        dd($request['user_id']);
+    }
+
+    function remove(Request $request, $id) {
+        dd($id);
+    }
+
+    function checkUser() {
+        $user = Auth::user();
+        return ($this->isAdmin($user));
     }
 }

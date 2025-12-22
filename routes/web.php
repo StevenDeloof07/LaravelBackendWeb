@@ -16,6 +16,7 @@ Route::get("/register", [WelcomeController::class, "register"])->name('registerP
 Route::post("/register", [AccountController::class, "store"])->name('registerAction');
 Route::post('/logout', [AccountController::class, "logout"])->name('logout');
 
-Route::get("/manage", [AdminController::class, "index"])->name("adminManagement")
-
+Route::get("/manage", [AdminController::class, "index"])->name("adminManagement");
+Route::post("/manage", [AdminController::class, "create"])->name("makeAdmin");
+Route::delete("/manage/{id}", [AdminController::class, "remove"])->name("removeAdmin");
 ?>
