@@ -61,7 +61,8 @@
                 <input type="checkbox" name="isAdmin">
             </div>
 
-            <input type="submit" id="formSubmit" value="Maak account aan">
+            <input type="submit" id="formSubmit" value="Maak account aan" disabled="true">
+            <div class="error-message" id="feedBackMessage"></div>
         </form>
     </div>
     <div id="message">
@@ -73,4 +74,5 @@
     @session("error") 
         <div class="error-message">{{ $value }}</div>
     @endsession
+    @vite("resources/js/account.js")
 @endsection

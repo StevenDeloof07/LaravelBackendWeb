@@ -27,9 +27,12 @@
             <input id="password_confirmation" type="password" name="password_confirmation"> 
         </div>
 
-        <input type="submit"  id="formSubmit" value="Registreer">
+        <input type="submit"  id="formSubmit" value="Registreer" disabled="true">
+        <div class="error-message" id="feedBackMessage"></div>
     </form>
 
     Al een account? <a href="{{ route("login") }}">Hier aanmelden</a>
+        @vite("resources/js/account.js")
+
 </body>
 </html>
