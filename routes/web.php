@@ -20,9 +20,9 @@ Route::post('/logout', [AccountController::class, "logout"])->name('logout');
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::prefix('manage')->group(function () {
         Route::get("/", [AdminController::class, "index"])->name("adminManagement");
-        Route::post("/", [AdminController::class, "create"])->name("makeAdmin");
+        Route::post("/", [AdminController::class, "createAdmin"])->name("makeAdmin");
         Route::delete("/{id}", [AdminController::class, "remove"])->name("removeAdmin");
-        Route::post('/create', [AdminController::class, "createNewUser"]);
+        Route::post('/create', [AdminController::class, "createUser"])->name("admin.createUser");
     });
 })
 

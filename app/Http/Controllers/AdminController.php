@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\User;
-use DB;
+use Exception;
+use Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,7 @@ class AdminController extends Controller
         return view("account.admin.users")->with($data);
     }
 
-    function create(Request $request) {
+    function createAdmin(Request $request) {
 
         $id = $request['user_id'];
 
@@ -55,6 +56,33 @@ class AdminController extends Controller
 
 
         return redirect()->back()->with(["message" => "Gebruiker is nu een admin"]);
+    }
+
+    function createUser(Request $request) {
+        try {
+            $validated = $request->validate([
+            "name" => "required",
+            "email" => "required|email|unique:users",
+            "password" => "required|min:8|confirmed",
+            "isAdmin" => "string|max:2"
+        ]);
+        } catch (Exception $e) {
+            redirect()->back()->with(["error", $e]);
+        }
+
+
+
+        $user = User::create([
+            "name" => $validated['name'],
+            "email" => $validated['email'],
+            "password" => Hash::make($validated['password'])
+        ]);
+
+        if (isset($validated['isAdmin'])) {
+            Admin::create(["user_id" => $user['id']]);
+        }
+
+        return redirect()->back()->with(["message", "Gebruiker succesvol aangemaakt"]);
     }
 
     function remove(Request $request, $id) {

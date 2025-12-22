@@ -36,11 +36,41 @@
             </tr>
             @endforeach
         </table>
+        <form action="{{ route("admin.createUser") }}" method="POST" class="flex-item register">
+            @csrf
+            <div>
+                <label for="name">Naam:</label>
+                <input id="name" type="text" name="name">
+            </div>
+            <div>
+                <label for="email">Mail:</label>
+                <input id="email" type="email" name="email">
+            </div>
+
+            <div>
+                <label for="password">Wachtwoord:</label>
+                <input id="password" type="password" name="password"> 
+            </div>
+            <div>
+                <label for="password_confirmation">Bevestig wachtwoord:</label>
+                <input id="password_confirmation" type="password" name="password_confirmation"> 
+            </div>
+            
+            <div>
+                <label for="isAdmin">Admin</label>
+                <input type="checkbox" name="isAdmin">
+            </div>
+
+            <input type="submit" id="formSubmit" value="Maak account aan">
+        </form>
     </div>
-    @session("message") 
+    <div id="message">
+        @session("message") 
         {{ $value }}
-    @endif
+        @endsession
+    </div>
+
     @session("error") 
         <div class="error-message">{{ $value }}</div>
-    @endif
+    @endsession
 @endsection
