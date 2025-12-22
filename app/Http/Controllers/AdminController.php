@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     function index() {
         $user = Auth::user();
-        if ($this->checkUser()) return redirect()->back();
+        if (!$this->checkUser()) return redirect()->back();
 
         $allUsers = User::all();
         $usersData = [];
@@ -42,10 +42,14 @@ class AdminController extends Controller
     }
 
     function create(Request $request) {
+        if (!$this->checkUser()) return redirect()->back();
+
         dd($request['user_id']);
     }
 
     function remove(Request $request, $id) {
+        if (!$this->checkUser()) return redirect()->back();
+
         dd($id);
     }
 
