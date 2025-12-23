@@ -9,25 +9,25 @@
 </head>
 <body>
     <nav>
-        <form action="{{ route("logout") }}" method="POST">
-            @csrf
-            <input type="submit" value="logout">
-        </form>
-
-        <a href="{{ route("home") }}">Home</a>
+        <a href="{{ route("home") }}" class="nav-element">Home</a>
 
         <!--Logic checked via Gemini, but written by me-->
         @auth
-            <a href="{{ route("getAccountInfo", ['id' => auth()->id()]) }}">Profiel</a>
+
+            <a href="{{ route("getAccountInfo", ['id' => auth()->id()]) }}" class="nav-element">Profiel</a>
 
             @if (auth()->user()->isAdmin())
-                <a href="{{route("adminManagement")}}">Beheer</a>
+                <a href="{{route("adminManagement")}}" class="nav-element">Beheer</a>
             @endif
 
+            <form action="{{ route("logout") }}" class="nav-element logAction" method="POST">
+                @csrf
+                <input class="nav-element" type="submit" value="logout">
+            </form>
         @endauth 
 
         @guest
-            <a href="/login">Login</a>
+            <a href="/login" class="nav-element logAction">Login</a>
         @endguest
         
     </nav>

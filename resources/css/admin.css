@@ -29,7 +29,7 @@ table {
     flex-direction: column;
 }
 
-.nav-element {
+.nav-admin-element {
     color:white;
     background-color: blue;
     margin-left: 10%;

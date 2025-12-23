@@ -1,3 +1,3 @@
 <div class="nav-admin">
-    <a class="nav-element" href="">Gebruikers</a>
+    <a class="nav-admin-element" href="">Gebruikers</a>
 </div>
