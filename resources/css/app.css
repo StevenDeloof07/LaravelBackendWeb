@@ -2,7 +2,19 @@
     color:red;
 }
 
+body {
+    margin: 0;
+}
+
 nav {
     display: flex;
     flex-direction: row;
+    background-color: rgb(36, 36, 36);
+    padding-top: 4rem;
+}
+
+nav a {
+    margin-left:10%;
+    background-color: rgb(3, 3, 161);
+    color: white;
 }

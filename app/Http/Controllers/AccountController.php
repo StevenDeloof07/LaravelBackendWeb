@@ -13,7 +13,15 @@ class AccountController extends Controller
         $user = User::where('id', $id)->first();
         if (empty($user)) return redirect()->back();
 
-        dd($user);
+        $data = [
+            "username" => $user['name'],
+            "email" => $user['email'],
+            "birthday" => $user['birthday'],
+            "about_me" => $user['about_me']
+        ];
+
+
+        return view('account.profile.about')->with("data", $data);
     }
 
     function store(Request $request) {

@@ -9,28 +9,18 @@
 </head>
 <body>
     <nav>
-        <form action="{{ route("logout") }}" method="POST">
-            @csrf
-            <input type="submit" value="logout">
-        </form>
+        <a href="{{ route("logout") }}">Logout</a>
 
-        <form action="{{ route("home") }}" method="GET">
-            @csrf
-            <input type="submit" value="Home">
-        </form>
-
-        @if ($isAdmin)
-
-        <form action="{{route("adminManagement")}}" method="GET">
-            @csrf
-            <input type="submit" value="Beheer">
-        </form>
-
-        @endif
+        <a href="{{ route("home") }}">Home</a>
 
         <!--Logic checked via Gemini, but written by me-->
         @auth
             <a href="{{ route("getAccountInfo", ['id' => auth()->id()]) }}">Profiel</a>
+
+            @if (auth()->user()->isAdmin())
+                <a href="{{route("adminManagement")}}">Beheer</a>
+            @endif
+
         @endauth 
 
         @guest
