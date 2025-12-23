@@ -8,13 +8,15 @@ body {
 
 nav {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     background-color: rgb(36, 36, 36);
-    padding-top: 4rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 nav a {
-    margin-left:10%;
+    margin-right:5%;
+    height: 2rem;
     background-color: rgb(3, 3, 161);
     color: white;
 }
