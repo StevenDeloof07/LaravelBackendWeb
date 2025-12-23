@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
+    function index($id) {
+        $user = User::where('id', $id)->first();
+        if (empty($user)) return redirect()->back();
+
+        dd($user);
+    }
+
     function store(Request $request) {
         $validated = $request->validate([
             "name" => "required",

@@ -7,6 +7,7 @@
     @vite(['resources/css/app.css'])
 </head>
 <body>
+    <a href="{{ route('home') }}">Terug</a>
     <div>Gelieve in te loggen met uw user mail</div>
     <br>
     <form action="{{ route("loginAction") }}" method="POST">

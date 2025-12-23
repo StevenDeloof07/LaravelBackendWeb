@@ -6,7 +6,9 @@
     <title>Registreer</title>
 </head>
 <body>
-    Registreer hier:<br>
+    <a href="{{ route('home') }}">Terug</a>
+
+    <div>Registreer hier:</div>
     <form action="{{ route("registerAction") }}" method="post" class="register">
         @csrf
         <div>

@@ -27,6 +27,16 @@
         </form>
 
         @endif
+
+        <!--Logic checked via Gemini, but written by me-->
+        @auth
+            <a href="{{ route("getAccountInfo", ['id' => auth()->id()]) }}">Profiel</a>
+        @endauth 
+
+        @guest
+            <a href="/login">Login</a>
+        @endguest
+        
     </nav>
     <main>
         @yield('content')

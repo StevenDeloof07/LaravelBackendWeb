@@ -11,8 +11,12 @@ class WelcomeController extends Controller
 {
     function index() {
         $user = Auth::user();
-        if (empty($user)) return view("account.login");
-        return view('welcome')->with(['isAdmin' => $user->isAdmin()]);
+        $isadmin = false;
+        if ($user != null)  $isadmin = $user->isAdmin();
+        return view('welcome')->with([
+            'isAdmin' => $isadmin,
+            'isLoggedIn' => !empty($user)
+        ]);
     }
 
     function findUser(Request $request) {
@@ -37,7 +41,11 @@ class WelcomeController extends Controller
         
     }
 
+    function login() {
+        return view('account.login.login');
+    }
+
     function register() {
-        return view("account.register");
+        return view("account.login.register");
     }
 }
