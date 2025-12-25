@@ -12,5 +12,5 @@
         <li>Verjaardag: {{ date("j M", strtotime($data['birthday'])) }}</li>
         <li>Over: {{ $data['about_me'] }}</li>
     </ul>
-    <img src="{{ asset('storage/' . $data['picture_link']) }}" height="100px" width="100px" alt="profile picture">
+    <img src="{{ asset('storage/' . $data['picture_link']) }}" height="200px"  alt="profile picture">
 @endsection

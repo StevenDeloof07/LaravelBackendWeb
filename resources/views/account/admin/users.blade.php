@@ -61,12 +61,12 @@
             <br>
             <div>
                 <label for="birthday">Verjaardag</label>
-                <input type="date" name="birthday">
+                <input type="date" id="birthday" name="birthday">
             </div>
             <br>
             <div>
                 <label for="about_me">Extra info</label><br>
-                <input type="text" name="about_me">
+                <input type="text" id="about_me" name="about_me">
             </div>
             
             <div>

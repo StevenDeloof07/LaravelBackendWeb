@@ -22,7 +22,7 @@
 
         <div>
             <label for="birthday">Verjaardag</label>
-            <input type="date" name="birthday">
+            <input type="date" id="birthday" name="birthday">
         </div>
 
         <div>
@@ -37,7 +37,7 @@
 
         <div>
             <label for="about_me">Vertel wat over jezelf</label><br>
-            <input type="text" name="about_me">
+            <input type="text" id="about_me" name="about_me">
         </div>
 
         <div>
