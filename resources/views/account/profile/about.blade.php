@@ -5,23 +5,12 @@
 @endsection
 
 @section("content")
-    <table>
-        <tr>
-            <th>Gebruikersnaam</th><th>Mail</th><th>Verjaardag</th><th>Over...</th>
-        </tr>
-        <tr>
-            <td>
-                {{ $data['username'] }}
-            </td>
-            <td>
-                {{ $data['email'] }}
-            </td>
-            <td>
-                {{ $data['birthday'] }}
-            </td>
-            <td>
-                {{ $data['about_me'] }}
-            </td>
-        </tr>
-    </table>
+<h2>Profiel</h2>
+    <ul>
+        <li>Naam: {{ $data['username'] }}</li>
+        <li>Email: {{ $data['email'] }}</li>
+        <li>Verjaardag: {{ date("j M", strtotime($data['birthday'])) }}</li>
+        <li>Over: {{ $data['about_me'] }}</li>
+    </ul>
+    <img src="{{ asset('storage/' . $data['picture_link']) }}" height="100px" width="100px" alt="profile picture">
 @endsection

@@ -9,7 +9,7 @@
     <a href="{{ route('home') }}">Terug</a>
 
     <div>Registreer hier:</div>
-    <form action="{{ route("registerAction") }}" method="post" class="register">
+    <form action="{{ route("registerAction") }}" method="post" class="register" enctype="multipart/form-data">
         @csrf
         <div>
             <label for="name">Naam:</label>
@@ -21,12 +21,30 @@
         </div>
 
         <div>
+            <label for="birthday">Verjaardag</label>
+            <input type="date" name="birthday">
+        </div>
+
+        <div>
             <label for="password">Wachtwoord:</label>
             <input id="password" type="password" name="password"> 
         </div>
         <div>
             <label for="password_confirmation">Bevestig wachtwoord:</label>
             <input id="password_confirmation" type="password" name="password_confirmation"> 
+        </div>
+        <br>
+
+        <div>
+            <label for="about_me">Vertel wat over jezelf</label><br>
+            <textarea name="about_me">
+            </textarea>
+        </div>
+
+        <div>
+            <label for="profile_picture">Profiel foto (optioneel)</label><br>
+
+            <input type="file" name="profile_picture">
         </div>
 
         <input type="submit"  id="formSubmit" value="Registreer" disabled="true">

@@ -37,6 +37,7 @@
             @endforeach
         </table>
         <form action="{{ route("admin.createUser") }}" method="POST" class="flex-item register">
+            <h4>Maak een account</h4>
             @csrf
             <div>
                 <label for="name">Naam:</label>
