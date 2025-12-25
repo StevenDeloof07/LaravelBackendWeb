@@ -16,6 +16,7 @@ Route::post("/register", [AccountController::class, "store"])->name('registerAct
 Route::post('/logout', [AccountController::class, "logout"])->name('logout');
 
 Route::get("/account/{id}", [AccountController::class, "index"])->name("getAccountInfo");
+Route::patch('/account/{id}', [AccountController::class, "changeInfo"])->name("changeProfile");
 
 //Gemini used for middleware, and prefix logic. Routes were written without ai.
 Route::middleware(['auth', 'admin'])->group(function () {

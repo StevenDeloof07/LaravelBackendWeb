@@ -16,6 +16,7 @@ class AccountController extends Controller
         if (empty($user)) return redirect()->back();
 
         $data = [
+            "id" => $user['id'],
             "username" => $user['name'],
             "email" => $user['email'],
             "birthday" => $user['birthday'],
@@ -61,6 +62,27 @@ class AccountController extends Controller
         Auth::login($user);
 
         return redirect()->to("/");
+    }
+
+    function changeInfo($id, Request $request) {
+        try {
+            $validated = $request->validate([
+                "name" => "required|string",
+                "about_me" => "required|string",
+                "birthday" => "required"
+            ]);
+        } catch (Exception $e) {
+            return redirect()->back()->with("error", "Niet alle waarden zijn correct ingevuld");
+        }
+
+        $user = User::get()->where('id' ,  $id)->first();
+
+        $user->update([
+            "name" => $validated['name'],
+            "about_me" => $validated['about_me'],
+            "birthday" => $validated['birthday']
+        ]);
+        return redirect()->back()->with("message", "Account succesvol aangepast!");
     }
 
     function logout(Request $request) {
