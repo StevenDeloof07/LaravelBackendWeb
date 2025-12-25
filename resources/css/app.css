@@ -32,6 +32,17 @@ nav {
     cursor: pointer;
 }
 
+header {
+    background-color: lightgrey;
+    width:20%;
+    margin-left: 40%;
+    align-content: center;
+}
+
+ul {
+    list-style: none;
+}
+
 .logAction {
     margin-left: auto;
     margin-right: 3%;

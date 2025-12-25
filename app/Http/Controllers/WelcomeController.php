@@ -13,10 +13,10 @@ class WelcomeController extends Controller
     function index() {
         $newsItems = News::get();
 
-        $data = [];
+        $newsList = [];
 
         foreach ($newsItems as $item) {
-            array_push($data, [
+            array_push($newsList, [
                 'title' => $item['title'],
                 'picture_link' => $item['picture_link'],
                 'content' => $item['content'],
@@ -25,7 +25,7 @@ class WelcomeController extends Controller
         }
 
 
-        return view('welcome', $data);
+        return view('welcome', ["newsList" => $newsList]);
     }
 
     function findUser(Request $request) {
