@@ -16,15 +16,15 @@
 
             <a href="{{ route("getAccountInfo", ['id' => auth()->id()]) }}" class="nav-element">Profiel</a>
 
-            @if (auth()->user()->isAdmin())
-                <a href="{{route("adminManagement")}}" class="nav-element">Beheer</a>
-            @endif
+                @if (auth()->user()->isAdmin())
+                    <a href="{{route("userManagement")}}" class="nav-element">Beheer</a>
+                @endif
 
-            <form action="{{ route("logout") }}" class="nav-element logAction" method="POST">
-                @csrf
-                <input class="nav-element" type="submit" value="logout">
-            </form>
-        @endauth 
+                <form action="{{ route("logout") }}" class="logAction" method="POST">
+                    @csrf
+                    <input class="nav-element" type="submit" value="logout">
+                </form>
+            @endauth 
 
         @guest
             <a href="/login" class="nav-element logAction">Login</a>
