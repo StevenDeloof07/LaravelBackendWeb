@@ -56,6 +56,16 @@
                 <label for="password_confirmation">Bevestig wachtwoord:</label>
                 <input id="password_confirmation" type="password" name="password_confirmation"> 
             </div>
+            <br>
+            <div>
+                <label for="birthday">Verjaardag</label>
+                <input type="date" name="birthday">
+            </div>
+            <br>
+            <div>
+                <label for="about_me">Extra info</label><br>
+                <input type="text" name="about_me">
+            </div>
             
             <div>
                 <label for="isAdmin">Admin</label>

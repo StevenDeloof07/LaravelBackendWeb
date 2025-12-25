@@ -37,8 +37,7 @@
 
         <div>
             <label for="about_me">Vertel wat over jezelf</label><br>
-            <textarea name="about_me">
-            </textarea>
+            <input type="text" name="about_me">
         </div>
 
         <div>

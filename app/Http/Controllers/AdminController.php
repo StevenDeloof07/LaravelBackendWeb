@@ -61,13 +61,18 @@ class AdminController extends Controller
     function createUser(Request $request) {
         try {
             $validated = $request->validate([
-            "name" => "required",
+            "name" => "required|string",
             "email" => "required|email|unique:users",
+            "birthday" => "required|date",
+            "about_me" => "nullable|string",
             "password" => "required|min:8|confirmed",
             "isAdmin" => "string|max:2"
-        ]);
+            ]);
+
+            if ($validated['about_me'] == null) $validated['about_me'] = "";
         } catch (Exception $e) {
-            redirect()->back()->with(["error", $e]);
+            dd($e);
+            return redirect()->back()->with(["error", $e]);
         }
 
 
@@ -75,6 +80,8 @@ class AdminController extends Controller
         $user = User::create([
             "name" => $validated['name'],
             "email" => $validated['email'],
+            "birthday" => $validated['birthday'],
+            "about_me" => $validated['about_me'],
             "password" => Hash::make($validated['password'])
         ]);
 
