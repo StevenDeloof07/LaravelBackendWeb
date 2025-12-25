@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
+use function PHPUnit\Framework\returnArgument;
 
 Route::get("/", [WelcomeController::class, "index"])->name("home");
 
@@ -21,10 +23,18 @@ Route::patch('/account/{id}', [AccountController::class, "changeInfo"])->name("c
 //Gemini used for middleware, and prefix logic. Routes were written without ai.
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::prefix('manage')->group(function () {
-        Route::get("/", [AdminController::class, "index"])->name("adminManagement");
-        Route::post("/", [AdminController::class, "createAdmin"])->name("makeAdmin");
-        Route::delete("/{id}", [AdminController::class, "remove"])->name("removeAdmin");
-        Route::post('/create', [AdminController::class, "createUser"])->name("admin.createUser");
+        Route::prefix("users")->group(function() {
+            Route::get("/", [AdminController::class, "index"])->name("userManagement");
+            Route::post("/", [AdminController::class, "createAdmin"])->name("makeAdmin");
+            Route::delete("/{id}", [AdminController::class, "remove"])->name("removeAdmin");
+            Route::post('/create', [AdminController::class, "createUser"])->name("admin.createUser");
+        });
+
+        Route::controller(NewsController::class)->prefix("news")->group(function () {
+            Route::get('/', function () {
+                return view("account.admin.news");
+            })->name("newsManagement");
+        });
     });
 })
 

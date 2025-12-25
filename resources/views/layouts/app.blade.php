@@ -18,7 +18,7 @@
 
                 @if (auth()->user()->isAdmin())
                     <a href="{{route("userManagement")}}" class="nav-element">Beheer</a>
-                @endif
+`                @endif
 
                 <form action="{{ route("logout") }}" class="logAction" method="POST">
                     @csrf

@@ -6,12 +6,18 @@ body {
     margin: 0;
 }
 
+
+
 nav {
     display: flex;
     flex-direction: row;
+
+    height: 8vh;
     background-color: rgb(36, 36, 36);
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+}
+
+main {
+    height: 82vh;
 }
 
 .nav-element {
@@ -22,21 +28,16 @@ nav {
     text-decoration-line: underline;
 
     border: solid 1px black;
+    margin-top: 2vh;
     margin-left:5%;
-    height: 2rem;
+
+    height: 4vh;
     background-color: rgb(3, 3, 161);
     color: white;
 }
 
 .nav-element :hover {
     cursor: pointer;
-}
-
-header {
-    background-color: lightgrey;
-    width:20%;
-    margin-left: 40%;
-    align-content: center;
 }
 
 ul {
