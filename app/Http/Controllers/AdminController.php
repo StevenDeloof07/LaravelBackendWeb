@@ -29,6 +29,7 @@ class AdminController extends Controller
 
 
         $data = [
+            'id' => $user['id'],
             'name' => $user['name'], 
             'users' => $usersData,
             'isAdmin' => true
@@ -68,8 +69,6 @@ class AdminController extends Controller
             "password" => "required|min:8|confirmed",
             "isAdmin" => "string|max:2"
             ]);
-
-            if ($validated['about_me'] == null) $validated['about_me'] = "";
         } catch (Exception $e) {
             dd($e);
             return redirect()->back()->with(["error", $e]);
