@@ -13,7 +13,7 @@ return new class extends Migration
     {
         //
         Schema::table("users", function (Blueprint $table) {
-            $table->string("picture_link")->default("images/user/paint.jpg")->change();
+            $table->string("picture_link")->default("images/user/paint.png")->change();
         });
     }
 
@@ -24,7 +24,7 @@ return new class extends Migration
     {
         //
         Schema::table("users", function (Blueprint $table) {
-            $table->string("picture_link")->default("images/paint.jpg")->change();
+            $table->string("picture_link")->default("images/paint.png")->change();
         });
     }
 };

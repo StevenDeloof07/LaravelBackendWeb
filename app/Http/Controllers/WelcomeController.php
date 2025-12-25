@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use Auth;
 use Exception;
 use Illuminate\Http\Request;
@@ -10,7 +11,21 @@ use App\Models\User;
 class WelcomeController extends Controller
 {
     function index() {
-        return view('welcome');
+        $newsItems = News::get();
+
+        $data = [];
+
+        foreach ($newsItems as $item) {
+            array_push($data, [
+                'title' => $item['title'],
+                'picture_link' => $item['picture_link'],
+                'content' => $item['content'],
+                'publication' => $item['publication']
+            ]); 
+        }
+
+
+        return view('welcome', $data);
     }
 
     function findUser(Request $request) {

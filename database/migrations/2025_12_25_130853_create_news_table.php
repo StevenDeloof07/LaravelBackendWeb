@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->string("title");
-            $table->string("picture_link")->default('/images/news/Server.jpg');
+            $table->string("picture_link")->default('images/news/Server.jpg');
             $table->text("content");
             $table->date("publication");
             $table->timestamps();
