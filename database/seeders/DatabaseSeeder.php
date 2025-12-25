@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 
 use App\Models\User;
+use App\Models\News;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
         
 
         User::factory(10)->create();
+        News::factory(2)->create();
 
         #call other seeders
         $this->call([AdminSeeder::class]);

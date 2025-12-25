@@ -46,7 +46,7 @@ class AccountController extends Controller
         $path = "images/paint.png";
 
         if ($validated["profile_picture"] != null) {
-            $path = $request->file("profile_picture")->store("images", "public");
+            $path = $request->file("profile_picture")->store("images/user", "public");
         }
 
 
