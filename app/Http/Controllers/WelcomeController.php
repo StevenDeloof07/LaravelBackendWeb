@@ -10,13 +10,7 @@ use App\Models\User;
 class WelcomeController extends Controller
 {
     function index() {
-        $user = Auth::user();
-        $isadmin = false;
-        if ($user != null)  $isadmin = $user->isAdmin();
-        return view('welcome')->with([
-            'isAdmin' => $isadmin,
-            'isLoggedIn' => !empty($user)
-        ]);
+        return view('welcome');
     }
 
     function findUser(Request $request) {
