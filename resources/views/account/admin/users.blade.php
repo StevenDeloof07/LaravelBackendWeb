@@ -9,35 +9,35 @@
 @endsection
 
 @section("content")
-    Dag {{ $name }}! 
-
     <div class="flex-container">
         @include('layouts.admin.nav')
-        <table class="main-info">
-        <tr>
-            <th>Naam</th><th>Mail</th><th>Is een Admin</th><th>Acties</th>
-        </tr>
-
-            @foreach ($users as $user)
+        <div class="main-info">
+            <table class="main-info">
             <tr>
-                <td>
-                    <a href="{{  route("getAccountInfo", ['id' => $user['id']]) }}">{{ $user['name'] }}</a>
-                </td>
-                <td>{{ $user['email'] }}</td>
-                <td>{{ $user['isAdmin'] ? "Ja" : "Nee"}}</td>
-                <td>
-                    <form action="{{ $user['isAdmin'] ? route("removeAdmin", ['id' => $user['id']]) : route("makeAdmin") }}" method="POST">
-                        @csrf 
-                        @method($user['isAdmin'] ? "DELETE" : "POST")
-                        @if(!$user['isAdmin'])
-                        <input type="hidden" name="user_id" value="{{ $user['id'] }}">
-                        @endif
-                        <input type="submit" value="{{ $user['isAdmin'] ? "Verwijder admin rechten" : "Maak admin"}}"> 
-                    </form>
-                </td>
+                <th>Naam</th><th>Mail</th><th>Is een Admin</th><th>Acties</th>
             </tr>
-            @endforeach
-        </table>
+
+                @foreach ($users as $user)
+                <tr>
+                    <td>
+                        <a href="{{  route("getAccountInfo", ['id' => $user['id']]) }}">{{ $user['name'] }}</a>
+                    </td>
+                    <td>{{ $user['email'] }}</td>
+                    <td>{{ $user['isAdmin'] ? "Ja" : "Nee"}}</td>
+                    <td>
+                        <form action="{{ $user['isAdmin'] ? route("removeAdmin", ['id' => $user['id']]) : route("makeAdmin") }}" method="POST">
+                            @csrf 
+                            @method($user['isAdmin'] ? "DELETE" : "POST")
+                            @if(!$user['isAdmin'])
+                            <input type="hidden" name="user_id" value="{{ $user['id'] }}">
+                            @endif
+                            <input type="submit" value="{{ $user['isAdmin'] ? "Verwijder admin rechten" : "Maak admin"}}"> 
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </table>
+        </div>
         <form action="{{ route("admin.createUser") }}" method="POST" class="flex-item register">
             <h4>Maak een account</h4>
             @csrf

@@ -1,9 +1,15 @@
+main {
+    height: 60%;
+}
 
-
+.main-info {
+    overflow: auto;
+}
 th, td {
-    padding:10px;
-    align-items:center;
-    border:solid black;
+    padding: 10px;
+    height: 40px;
+    align-items: center;
+    border: solid black;
     border-width: 1px;
 }
 
@@ -15,32 +21,34 @@ table {
 
 .flex-container {
     display: flex;
+    height:100%;
     flex-direction: row;
 }
 
 .flex-item {
-    border:solid black;
-    
+    border: solid black;
+
     border-width: 1px;
 }
 
 .nav-admin {
     background-color: lightgray;
-    width:15%;
+    width: 15%;
+    height: 75%;
 
     display: flex;
     flex-direction: column;
 }
 
 .nav-admin-element {
-    color:white;
+    color: white;
     background-color: blue;
     margin-left: 10%;
     margin-top: 5%;
-    height:15%;
-    width:80%;
+    height: 15%;
+    width: 80%;
 }
 
 input .about-me {
-    height:200%;
+    height: 200%;
 }

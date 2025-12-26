@@ -4,6 +4,7 @@
 
 body {
     margin: 0;
+    height: 100vh;
 }
 
 
@@ -11,13 +12,11 @@ body {
 nav {
     display: flex;
     flex-direction: row;
-
-    height: 8vh;
     background-color: rgb(36, 36, 36);
 }
 
 main {
-    height: 82vh;
+    background-color: red;
 }
 
 .nav-element {
@@ -28,10 +27,11 @@ main {
     text-decoration-line: underline;
 
     border: solid 1px black;
-    margin-top: 2vh;
+    margin-top: 1.15rem;
+    margin-bottom: 1.15rem;
     margin-left:5%;
 
-    height: 4vh;
+    height: 2.5rem;
     background-color: rgb(3, 3, 161);
     color: white;
 }
