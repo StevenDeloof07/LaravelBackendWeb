@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 class QuestionController extends Controller
 {
     function index() {
-        dd(Question::getAll());
-
-        return view("users.FAQ");
+        return view("users.FAQ", ['data' => Question::getAll()]);
     } 
 }

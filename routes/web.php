@@ -20,6 +20,9 @@ Route::post('/logout', [AccountController::class, "logout"])->name('logout');
 
 Route::controller(QuestionController::class)->prefix("FAQ",)->group(function () {
     Route::get('/', "index");
+    Route::middleware(['auth', 'admin'])->prefix("manage")->group(function () {
+        Route::get('/', 'manage')->name('questionManagement');
+    });
 });
 
 Route::get("/account/{id}", [AccountController::class, "index"])->name("getAccountInfo");

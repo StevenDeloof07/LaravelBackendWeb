@@ -16,15 +16,27 @@ class Question extends Model
     }
 
     public static function getAll() {
-        $questions = [];
-        foreach (Question::get() as $question) {
-            array_push($questions,[
-                "id" => $question['id'],
-                "question" => $question['question'],
-                "anwser" => $question['anwser'],
-                "category" => Category::get()->where('id', '=', $question['category_id'])->first()['name']
-            ]);
+        $data = [];
+
+        $categories = Category::get();
+
+        foreach ($categories as $category) {
+            $name = $category['name'];
+            $questions = [];
+            $question_pull = Question::get()->where("category_id", '=', $category['id']);
+
+            foreach ($question_pull as $question) {
+                array_push($questions,[
+                    "id" => $question['id'],
+                    "question" => $question['question'],
+                    "anwser" => $question['anwser']
+                ]);
+            }
+
+
+            array_push($data, ['name' => $name, 'questions' => $questions]);
         }
-        return $questions;
+
+        return $data;
     }
 }
