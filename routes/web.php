@@ -33,6 +33,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::controller(NewsController::class)->prefix("news")->group(function () {
             Route::get('/', 'getView')->name("newsManagement");
             Route::post('/', 'addItem')->name('addNewsItem');
+            Route::delete('/{id}', "remove")->name("removeNewsItem");
         });
     });
 })

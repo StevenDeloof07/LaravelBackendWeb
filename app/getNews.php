@@ -13,6 +13,7 @@ trait getNews
 
         foreach ($newsItems as $item) {
             array_push($newsList, [
+                'id' => $item['id'],
                 'title' => $item['title'],
                 'picture_link' => $item['picture_link'],
                 'content' => $item['content'],

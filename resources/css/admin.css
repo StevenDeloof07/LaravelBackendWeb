@@ -3,9 +3,10 @@ main {
 }
 
 .main-info {
+    border:solid 1px black;
     overflow: auto;
-    width: 50%;
-    padding-left: 5%;
+    width: 70%;
+    margin-left: 5%;
 }
 th, td {
     padding: 10px;

@@ -41,4 +41,9 @@ class NewsController extends Controller
 
         return redirect()->back();
     }
+
+    function remove($id) {
+        News::where('id', $id)->delete();
+        return redirect()->back();
+    }
 }

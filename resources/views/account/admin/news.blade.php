@@ -20,6 +20,12 @@
                     <div>
                         {{ $newsitem['content'] }}
                     </div>
+
+                    <form action="{{ route('removeNewsItem', $newsitem['id']) }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <input type="submit" value="verwijder">
+                    </form>
                 </li>
             @endforeach
         </table>
@@ -42,10 +48,14 @@
             <input type="text" class="big-text" name="content">
         </div>
 
-        <input type="submit" value="voeg toe">
+        <input type="submit" id='submit' disabled value="voeg toe">
         @session("error") 
             <div class="error-message">{{ $value }}</div>
         @endsession
     </form>
 </div>
+@endsection
+
+@section("scripts")
+    @vite('resources/js/news.js')
 @endsection
