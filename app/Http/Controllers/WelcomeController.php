@@ -15,7 +15,7 @@ class WelcomeController extends Controller
     function index() {
         $newsList = $this->get_all_news();
 
-        return view('welcome', ["newsList" => $newsList]);
+        return view('users.welcome', ["newsList" => $newsList]);
     }
 
     function findUser(Request $request) {

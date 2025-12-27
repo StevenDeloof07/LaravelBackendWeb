@@ -16,20 +16,23 @@
 
             <a href="{{ route("getAccountInfo", ['id' => auth()->id()]) }}" class="nav-element">Profiel</a>
 
-                @if (auth()->user()->isAdmin())
-                    <a href="{{route("userManagement")}}" class="nav-element">Beheer</a>
-`                @endif
+            @if (auth()->user()->isAdmin())
+                <a href="{{route("userManagement")}}" class="nav-element">Beheer</a>
+`           @endif
+        @endauth
 
-                <form action="{{ route("logout") }}" class="logAction" method="POST">
-                    @csrf
-                    <input class="nav-element" type="submit" value="logout">
-                </form>
-            @endauth 
+        <a href="/FAQ" class="nav-element">FAQ</a> 
+
+        @auth
+            <form action="{{ route("logout") }}" class="logAction" method="POST">
+                @csrf
+                <input class="nav-element" type="submit" value="logout">
+            </form>
+        @endauth 
 
         @guest
             <a href="/login" class="nav-element logAction">Login</a>
         @endguest
-        
     </nav>
     <main>
         @yield('content')

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use function PHPUnit\Framework\returnArgument;
@@ -17,8 +18,14 @@ Route::post("/register", [AccountController::class, "store"])->name('registerAct
 
 Route::post('/logout', [AccountController::class, "logout"])->name('logout');
 
+Route::controller(QuestionController::class)->prefix("FAQ",)->group(function () {
+    Route::get('/', "index");
+});
+
 Route::get("/account/{id}", [AccountController::class, "index"])->name("getAccountInfo");
-Route::patch('/account/{id}', [AccountController::class, "changeInfo"])->name("changeProfile");
+Route::middleware('auth')->group(function () {
+    Route::patch('/account/{id}', [AccountController::class, "changeInfo"])->name("changeProfile");
+});
 
 //Gemini used for middleware, and prefix logic. Routes were written without ai.
 Route::middleware(['auth', 'admin'])->group(function () {
