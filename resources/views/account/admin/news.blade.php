@@ -24,5 +24,28 @@
             @endforeach
         </table>
     </div>
+    <form action="{{ route('addNewsItem') }}" method="POST" class="flex-form" enctype="multipart/form-data">
+        @csrf
+        <h2>Voeg een nieuwtje toe</h2>
+        <div>
+            <label for="title">Titel</label>
+            <input type="text" name="title">
+        </div>
+
+        <div>
+            <label for="profile_picture">Nieuwsfoto</label>
+            <input type="file" name="profile_picture">
+        </div>
+
+        <div>
+            <label for="content">Nieuws content</label>
+            <input type="text" class="big-text" name="content">
+        </div>
+
+        <input type="submit" value="voeg toe">
+        @session("error") 
+            <div class="error-message">{{ $value }}</div>
+        @endsession
+    </form>
 </div>
 @endsection

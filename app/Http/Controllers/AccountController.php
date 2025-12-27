@@ -43,7 +43,7 @@ class AccountController extends Controller
         }   catch (Exception $e) {
             redirect()->back()->with("message", "Niet alle waarden zijn correct ingevuld");
         }
-        $path = "images/paint.png";
+        $path = "images/user/paint.png";
 
         if ($request["profile_picture"] != null) {
             $path = $request->file("profile_picture")->store("images/user", "public");

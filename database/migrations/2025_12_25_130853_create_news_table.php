@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("title");
             $table->string("picture_link")->default('/images/news/Server.jpg');
             $table->text("content");
-            $table->date("publication");
+            $table->timestamp("publication")->useCurrent();
             $table->timestamps();
         });
     }

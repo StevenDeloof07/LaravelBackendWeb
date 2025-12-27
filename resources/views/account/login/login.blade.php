@@ -22,7 +22,7 @@
             <input type="password" name="password"> 
         </div>
         <br>
-        <div>
+        <div class="check">
             <label for="remember_me">Blijf ingelogd</label>
             <input type="checkbox" name="remember_me">
         </div>
@@ -32,8 +32,8 @@
 
     Nog geen account? <a href="{{ route("registerPage") }}">Registreer hier</a>
 
-    @if (session("failMessage"))
-        <div class="error-message">{{ session("failMessage") }}</div>
+    @if (session("error-message"))
+        <div class="error-message">{{ session("error-message") }}</div>
     @endif
 </body>
 </html>

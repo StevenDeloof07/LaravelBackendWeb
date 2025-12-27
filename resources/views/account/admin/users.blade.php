@@ -66,16 +66,21 @@
             <br>
             <div>
                 <label for="about_me">Extra info</label><br>
-                <input type="text" id="about_me" name="about_me">
+                <input type="text" id="about_me" class="big-text" name="about_me">
             </div>
             
-            <div>
+            <div class="check">
                 <label for="isAdmin">Admin</label>
-                <input type="checkbox" name="isAdmin">
+                <input type="checkbox" name="isAdmin"></span>
             </div>
 
             <input type="submit" id="formSubmit" value="Maak account aan" disabled="true">
-            <div class="error-message" id="feedBackMessage"></div>
+            <div class="error-message" id="feedBackMessage">
+                @session("error") 
+                    {{ $value }}
+                @endsession
+            </div>
+            
         </form>
     </div>
     <div id="message">
@@ -84,8 +89,5 @@
         @endsession
     </div>
 
-    @session("error") 
-        <div class="error-message">{{ $value }}</div>
-    @endsession
     @vite("resources/js/account.js")
 @endsection

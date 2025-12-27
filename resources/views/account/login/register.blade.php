@@ -45,7 +45,7 @@
             <input type="file" name="profile_picture">
         </div>
 
-        <div>
+        <div class="check">
             <label for="remember_me">Blijf ingelogd</label>
             <input type="checkbox" name="remember_me">
         </div>
@@ -55,6 +55,11 @@
     </form>
 
     Al een account? <a href="{{ route("login") }}">Hier aanmelden</a>
+
+    @if (session("error-message"))
+        <div class="error-message">{{ session("error-message") }}</div>
+    @endif
+    
         @vite("resources/js/account.js")
 
 </body>

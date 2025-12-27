@@ -12,4 +12,10 @@ class News extends Model
     /** @use HasFactory<\Database\Factories\NewsFactory> */
     use HasFactory, Notifiable;
     //
+
+    protected $fillable = [
+        "title", 
+        "picture_link",
+        "content"
+    ];
 }
