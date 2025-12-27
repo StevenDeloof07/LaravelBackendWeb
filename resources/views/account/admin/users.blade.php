@@ -12,7 +12,7 @@
     <div class="flex-container">
         @include('layouts.admin.nav')
         <div class="main-info">
-            <table class="main-info">
+            <table >
             <tr>
                 <th>Naam</th><th>Mail</th><th>Is een Admin</th><th>Acties</th>
             </tr>
@@ -38,7 +38,7 @@
                 @endforeach
             </table>
         </div>
-        <form action="{{ route("admin.createUser") }}" method="POST" class="flex-item register">
+        <form action="{{ route("admin.createUser") }}" method="POST" class="flex-form register">
             <h4>Maak een account</h4>
             @csrf
             <div>

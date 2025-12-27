@@ -12,15 +12,17 @@
 <div class="flex-container">
     @include('layouts.admin.nav')
     <div class="main-info">
-        @foreach ($newsList as $newsitem)
-            <li>
-                <h2>{{ $newsitem['title'] }}</h2>
-                <img src="{{ asset("storage" . $newsitem['picture_link']) }}" height="256px" alt="nieuws foto">
-                <div>
-                    {{ $newsitem['content'] }}
-                </div>
-            </li>
-        @endforeach
+        <table>
+            @foreach ($newsList as $newsitem)
+                <li>
+                    <h2>{{ $newsitem['title'] }}</h2>
+                    <img src="{{ asset("storage" . $newsitem['picture_link']) }}" height="256px" alt="nieuws foto">
+                    <div>
+                        {{ $newsitem['content'] }}
+                    </div>
+                </li>
+            @endforeach
+        </table>
     </div>
 </div>
 @endsection

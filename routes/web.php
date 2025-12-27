@@ -31,9 +31,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         });
 
         Route::controller(NewsController::class)->prefix("news")->group(function () {
-            Route::get('/', function () {
-                return view("account.admin.news");
-            })->name("newsManagement");
+            Route::get('/', 'getView')->name("newsManagement");
         });
     });
 })
