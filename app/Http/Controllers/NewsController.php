@@ -7,6 +7,7 @@ use App\Models\News;
 use DateTime;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -62,7 +63,10 @@ class NewsController extends Controller
     }
 
     function remove($id) {
-        News::where('id', $id)->delete();
+        $newsItem = News::where('id',  "=", $id)->first();
+        $newsItem->delete();
+        //check for default image, don't want to delete that
+        if ($newsItem['picture_link'] != "/images/news/Server.jpg") Storage::delete($newsItem['picture_link']);
         return redirect()->back();
     }
 }
