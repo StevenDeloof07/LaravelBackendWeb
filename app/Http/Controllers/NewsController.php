@@ -54,11 +54,15 @@ class NewsController extends Controller
             return redirect()->back()->with('error', "niet alle waarden zijn correct ingevuld");
         }
 
+        $oldNews = News::where('id', "=", $validated['id'])->first();
+
         if ($request['profile_picture']) {
             $validated['picture_link'] = "/" .  $request->file("profile_picture")->store("/images/news", "public");
+            if ($oldNews['picture_link'] != "/images/news/Server.jpg") Storage::delete($oldNews['picture_link']);
         }
 
-        News::where('id', $validated['id'])->update($validated);
+
+        $oldNews->update($validated);
         return redirect()->back();
     }
 
