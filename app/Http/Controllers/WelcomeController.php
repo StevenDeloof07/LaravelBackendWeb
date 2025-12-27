@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\getNews;
 use App\Models\News;
 use Auth;
 use Exception;
@@ -10,20 +11,9 @@ use App\Models\User;
 
 class WelcomeController extends Controller
 {
+    use getNews;
     function index() {
-        $newsItems = News::get();
-
-        $newsList = [];
-
-        foreach ($newsItems as $item) {
-            array_push($newsList, [
-                'title' => $item['title'],
-                'picture_link' => $item['picture_link'],
-                'content' => $item['content'],
-                'publication' => $item['publication']
-            ]); 
-        }
-
+        $newsList = $this->get_all_news();
 
         return view('welcome', ["newsList" => $newsList]);
     }
