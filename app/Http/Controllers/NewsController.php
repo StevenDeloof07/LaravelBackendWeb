@@ -42,6 +42,25 @@ class NewsController extends Controller
         return redirect()->back();
     }
 
+    function change(Request $request) {
+        try {
+            $validated = $request->validate([
+                'id' => "required|integer|exists:news",
+                'title' => "required|string",
+                "content" => "required|string"
+            ]);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', "niet alle waarden zijn correct ingevuld");
+        }
+
+        if ($request['profile_picture']) {
+            $validated['picture_link'] = "/" .  $request->file("profile_picture")->store("/images/news", "public");
+        }
+
+        News::where('id', $validated['id'])->update($validated);
+        return redirect()->back();
+    }
+
     function remove($id) {
         News::where('id', $id)->delete();
         return redirect()->back();
