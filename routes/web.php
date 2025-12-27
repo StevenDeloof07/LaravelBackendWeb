@@ -18,11 +18,16 @@ Route::post("/register", [AccountController::class, "store"])->name('registerAct
 
 Route::post('/logout', [AccountController::class, "logout"])->name('logout');
 
-Route::controller(QuestionController::class)->prefix("FAQ",)->group(function () {
-    Route::get('/', "index");
-    Route::middleware(['auth', 'admin'])->prefix("manage")->group(function () {
-        Route::get('/', 'manage')->name('questionManagement');
+Route::prefix("FAQ",)->group(function () {
+    Route::controller(QuestionController::class)->group(function () {
+        Route::get('/', "index");
+        Route::middleware(['auth', 'admin'])->prefix("manage")->group(function () {
+            Route::get('/', 'manage')->name('questionManagement');
+            Route::post('/', 'addQuestion')->name('addQuestion');
+            Route::post('/category', 'addCategory')->name('addCategory');
+        });
     });
+    
 });
 
 Route::get("/account/{id}", [AccountController::class, "index"])->name("getAccountInfo");

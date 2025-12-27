@@ -1,5 +1,5 @@
 main {
-    height: 60%;
+    height: 75%;
 }
 
 .main-info {
@@ -30,8 +30,8 @@ table {
 }
 
 .flex-form {
-    margin-left: 7.5%;
-    width: 22.5%;
+    margin-left: 5%;
+    width: 25%;
     border: solid black;
     border-width: 1px;
 }

@@ -11,6 +11,11 @@ class Question extends Model
     /** @use HasFactory<\Database\Factories\QuestionFactory> */
     use HasFactory, Notifiable;
     //
+
+    protected $fillable = [
+        "question", 'anwser', "category_id"
+    ];
+    
     public function category() {
         return $this->hasOne(Category::class);
     }
@@ -21,6 +26,7 @@ class Question extends Model
         $categories = Category::get();
 
         foreach ($categories as $category) {
+            $id = $category['id'];
             $name = $category['name'];
             $questions = [];
             $question_pull = Question::get()->where("category_id", '=', $category['id']);
@@ -34,7 +40,7 @@ class Question extends Model
             }
 
 
-            array_push($data, ['name' => $name, 'questions' => $questions]);
+            array_push($data, ['id' => $id, 'name' => $name, 'questions' => $questions]);
         }
 
         return $data;
