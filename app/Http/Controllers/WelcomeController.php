@@ -38,7 +38,8 @@ class WelcomeController extends Controller
             return redirect()->back()->with(["failMessage" => "Vul alle gegevens in."]);
         }
 
-        if (Auth::attempt($authenticated)) {
+        //code changed using https://gemini.google.com/share/2ed45321701b
+        if (Auth::attempt($authenticated, $request->has('remember_me'))) {
             return redirect()->to("/");
         }
         #Checks user existence for the correct error message

@@ -42,8 +42,12 @@
 
         <div>
             <label for="profile_picture">Profiel foto (optioneel)</label><br>
-
             <input type="file" name="profile_picture">
+        </div>
+
+        <div>
+            <label for="remember_me">Blijf ingelogd</label>
+            <input type="checkbox" name="remember_me">
         </div>
 
         <input type="submit"  id="formSubmit" value="Registreer" disabled="true">

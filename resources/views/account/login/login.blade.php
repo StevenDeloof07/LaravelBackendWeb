@@ -21,6 +21,11 @@
             <label for="password">Password:</label>
             <input type="password" name="password"> 
         </div>
+        <br>
+        <div>
+            <label for="remember_me">Blijf ingelogd</label>
+            <input type="checkbox" name="remember_me">
+        </div>
 
         <input type="submit" value="login">
     </form>

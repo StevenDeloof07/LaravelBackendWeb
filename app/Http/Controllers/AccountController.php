@@ -45,10 +45,12 @@ class AccountController extends Controller
         }
         $path = "images/paint.png";
 
-        if ($validated["profile_picture"] != null) {
+        if ($request["profile_picture"] != null) {
             $path = $request->file("profile_picture")->store("images/user", "public");
         }
 
+        $remembered = false;
+        if ($request['remember_me'] != null) $remembered = true;
 
         $user = User::create([
             "name" => $request->name,
@@ -59,7 +61,7 @@ class AccountController extends Controller
             "picture_link" => $path
         ]);
 
-        Auth::login($user);
+        Auth::login($user, $remembered);
 
         return redirect()->to("/");
     }
