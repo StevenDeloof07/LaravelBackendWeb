@@ -45,6 +45,10 @@ class WelcomeController extends Controller
         return view('account.login.login');
     }
 
+    function resetView() {
+        return view('account.login.reset');
+    }
+
     function register() {
         return view("account.login.register");
     }

@@ -16,18 +16,18 @@
             <label for="email">Mail:</label>
             <input type="email" name="email">
         </div>
-
         <div>
             <label for="password">Password:</label>
             <input type="password" name="password"> 
         </div>
-        <br>
         <div class="check">
             <label for="remember_me">Blijf ingelogd</label>
             <input type="checkbox" name="remember_me">
         </div>
 
         <input type="submit" value="login">
+        <br>
+        <a href="{{route("change_pass")}}">Wachtwoord vergeten?</a>
     </form>
 
     Nog geen account? <a href="{{ route("registerPage") }}">Registreer hier</a>

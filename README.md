@@ -29,7 +29,7 @@ https://www.delftstack.com/howto/javascript/prevent-form-submit-javascript/
 https://www.w3schools.com/jsref/met_win_confirm.asp
 
 OrderShipped
-https://techsolutionstuff.com/post/laravel-12-send-email-tutorial-step-by-step-guide
+https://techsolutionstuff.com/post/laravel-12-send-email-tutphporial-step-by-step-guide
 
 
 AccountController

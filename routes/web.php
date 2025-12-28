@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
@@ -11,8 +12,14 @@ use function PHPUnit\Framework\returnArgument;
 
 Route::get("/", [WelcomeController::class, "index"])->name("home");
 
-Route::get('/login', [WelcomeController::class, "login"])->name("login");
-Route::post('/login', [WelcomeController::class, "findUser"])->name("loginAction");
+Route::prefix('login')->group(function () {
+    Route::get('/', [WelcomeController::class, "login"])->name("login");
+    Route::post('/', [WelcomeController::class, "findUser"])->name("loginAction");
+
+    Route::controller(PasswordController::class)->prefix('reset')->group(function() {
+        Route::get('/', 'changeView')->name("change_pass");
+    });
+});
 
 Route::get("/register", [WelcomeController::class, "register"])->name('registerPage');
 Route::post("/register", [AccountController::class, "store"])->name('registerAction');
