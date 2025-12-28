@@ -26,8 +26,12 @@ Route::prefix("FAQ",)->group(function () {
             Route::post('/', 'addQuestion')->name('addQuestion');
             Route::put('/', 'changeQuestion')->name('changeQuestion');
             Route::delete('/', 'removeQuestion')->name('removeQuestion');
-            
-            Route::post('/category', 'addCategory')->name('addCategory');
+
+            Route::prefix('category')->group(function () {
+                Route::post('/', 'addCategory')->name('addCategory');
+                route::put('/', 'changeCategory')->name('changeCategory');
+                route::delete('/', 'removeCategory')->name('removeCategory');
+            });
         });
     });
     

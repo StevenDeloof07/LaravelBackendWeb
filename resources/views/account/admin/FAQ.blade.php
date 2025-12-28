@@ -48,13 +48,38 @@
             <label for="name">Naam Category</label>
             <input type="text" name="name">
             <input type="submit" value="Categorie toevoegen">
-            @session('error')
-                <div class="error-message">{{ $value }}</div>
-            @endsession
-            @session('message')
-                <div>{{ $value }}</div>
-            @endsession
         </form>
+
+
+        <form action="{{ route('changeCategory') }}" method="post">
+            <h2>Pas categorie aan</h2>
+            @csrf
+            @method('PUT')
+                    <select name="id">
+                        @foreach ($data as $category)
+                            <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                        @endforeach
+                    </select>
+                    <br>
+                    <label for="new_name">Nieuwe naam:</label><br>
+                    <input type="text" name="new_name">
+                
+            
+            <input type="submit" value="Pas aan">
+        </form>
+
+        <form action="{{ route('removeCategory') }}" method="POST" id="deleteCategory">
+            @csrf
+            @method('delete')
+            <h2>Verwijder Categorie</h2>
+            <select name="id">
+                @foreach ($data as $category)
+                    <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                @endforeach
+            </select>
+            <input type="submit" value="Verwijder">
+        </form>
+
         <form action="{{ route("addQuestion") }}" method="post">
             @csrf
             <h2>Vraag toevoegen</h2>
@@ -76,6 +101,7 @@
             </select>
             <input type="submit" value="toevoegen">
         </form>
+
         <form action="{{ route('changeQuestion') }}" id="changeQuestion" style="display:none" method="post">
             @csrf 
             @method('put')
@@ -100,6 +126,12 @@
 
             <input type="submit" value="Aanpassen">
         </form>
+        @session('error')
+                <div class="error-message">{{ $value }}</div>
+            @endsession
+            @session('message')
+                <div>{{ $value }}</div>
+            @endsession
     </div>
 </div>
 @vite("resources/js/FAQ.js")

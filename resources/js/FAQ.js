@@ -18,3 +18,11 @@ for (let button of changeButtons) {
         document.getElementById('change_category').value = categoryId;
     })
 }
+//Add an event listener to double check deletion
+//code taken from https://www.delftstack.com/howto/javascript/prevent-form-submit-javascript/
+//prompt code taken from https://www.w3schools.com/jsref/met_win_confirm.asp
+document.getElementById('deleteCategory').addEventListener('submit', (event) => {
+    const accepted = confirm("Ben je er zeker van dat je deze cattegorie wil verwijderen? Alle gelinkte gebruikers zullen mee verwijdert worden");
+
+    if (!accepted) event.preventDefault();
+})
