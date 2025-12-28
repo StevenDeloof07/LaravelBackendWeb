@@ -24,6 +24,9 @@ Route::prefix("FAQ",)->group(function () {
         Route::middleware(['auth', 'admin'])->prefix("manage")->group(function () {
             Route::get('/', 'manage')->name('questionManagement');
             Route::post('/', 'addQuestion')->name('addQuestion');
+            Route::put('/', 'changeQuestion')->name('changeQuestion');
+            Route::delete('/', 'removeQuestion')->name('removeQuestion');
+            
             Route::post('/category', 'addCategory')->name('addCategory');
         });
     });

@@ -21,10 +21,19 @@
                         @foreach ($category['questions'] as $question)
                         <li>
                             <h3>Vraag:</h3>
-                            {{ $question['question'] }}
+                                <div class="{{ $question['id'] }}">{{ $question['question'] }}</div>
                             <br>
                             <h3>Antwoord:</h3>
-                            {{ $question['anwser'] }}
+                                <div class="{{ $question['id'] }}">{{ $question['anwser'] }}</div>
+                            <br>
+                            <br>
+                            <button class="changeQuestion category{{ $category['id'] }}" id="{{ $question['id'] }}">Pas aan</button>
+                            <form action="{{ route('removeQuestion') }}" style="display:inline" method="post">
+                                @csrf
+                                @method('delete')
+                                <input type="hidden" name="id" value="{{ $question['id'] }}">
+                                <input type="submit" value="Verwijder">
+                            </form>
                         </li>
                         @endforeach
                 </ul>
@@ -67,7 +76,31 @@
             </select>
             <input type="submit" value="toevoegen">
         </form>
-        
+        <form action="{{ route('changeQuestion') }}" id="changeQuestion" style="display:none" method="post">
+            @csrf 
+            @method('put')
+            <h2>Vraag aanpassen</h2>
+            <input type="hidden" name="id" id="changeQuestionId">
+
+            <label for="question">Vraag</label>
+            <input type="text" name="question" id="changeQuestionValue">
+            <br>
+
+            <label for="anwser">Antwoord</label>
+            <input type="text" name="anwser" id="changeAnwserValue">
+
+            <br>
+
+            <label for="category_id">Categorie</label>
+            <select name="category_id" id="change_category">
+                @foreach ($data as $category)
+                    <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                @endforeach
+            </select>
+
+            <input type="submit" value="Aanpassen">
+        </form>
     </div>
 </div>
+@vite("resources/js/FAQ.js")
 @endsection

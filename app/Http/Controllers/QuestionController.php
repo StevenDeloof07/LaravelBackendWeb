@@ -32,6 +32,34 @@ class QuestionController extends Controller
         return redirect()->back()->with("message", "Vraag aangemaakt!");
     }
 
+    function changeQuestion(Request $request) {
+        try {
+            $validated = $request->validate([
+                'id' => 'integer| exists:questions,id',
+                'question' => 'required|string',
+                'anwser' => 'required|string',
+                'category_id' => "required|integer|exists:categories,id"
+            ]);
+        } catch (Exception $e) {
+            return redirect()->back()->with('error', "Niet alle data is correct ingevuld");
+        }
+
+        Question::where('id', "=", $validated['id'])->update($validated);
+
+        return redirect()->back();
+    }
+
+    function removeQuestion(Request $request) {
+        try {
+            $validated = $request->validate(['id' => 'required|exists:questions,id']);
+        } catch(Exception $e) {
+            return redirect()->back()->with("error", "Fout: vraag lijkt niet te bestaan. Contacteer de web beheerder voor meer info");
+        }
+
+        Question::where('id', '=', $validated['id'])->delete();
+        return redirect()->back();
+    }
+
     function addCategory(Request $request) {
         try  {
             $validated = $request->validate([
