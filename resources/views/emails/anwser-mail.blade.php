@@ -6,14 +6,16 @@
     <title>Mail</title>
 </head>
 <body>
-    Dag {{ $data['admin'] }}! Er is een nieuw formulier ingeleverd
-
+    Uw vraag {{  $data['question'] }}<br> 
+    is beantwoord door {{ $data['sender'] }}
 
     <div>
-        Van: {{ $data['user_email'] }}
+        Van: {{ $data['sender_mail'] }}
         
+        <br>
+
         <div>
-            {{ $data['question'] }}
+            {{ $data['anwser'] }}
         </div>
     </div>
 </body>

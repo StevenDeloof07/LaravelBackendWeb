@@ -64,6 +64,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
             Route::patch('/', 'change')->name('changeNewsItem');
             Route::delete('/{id}', "remove")->name("removeNewsItem");
         });
+
+        Route::controller(ContactController::class)->prefix("contact")->group(function () {
+            Route::get('/', 'get')->name('GetContactForms');
+            Route::post('/', 'respond')->name('respondToQuestion');
+        });
     });
 })
 

@@ -11,6 +11,7 @@ export default defineConfig({
                 'resources/js/account.js', 
                 'resources/js/profile.js', 
                 'resources/js/news.js',
+                'resources/js/contact.js',
                 'resources/js/FAQ.js'],
             refresh: true,
         }),

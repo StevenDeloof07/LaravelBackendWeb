@@ -30,7 +30,7 @@
         <form action="{{ route('contactAdmin') }}" class="formContainer" method="post">
         @csrf
         <label for="mail">Uw mail:</label>
-        <input type="email" name="mail">
+        <input type="email" name="user_email">
         <br>
         <label for="question">Welke vraag hebt u voor ons:</label>
         <input type="text" id="question" name="question">

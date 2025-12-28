@@ -24,8 +24,6 @@ class DatabaseSeeder extends Seeder
         News::factory(2)->create();
 
         #call other seeders
-        $this->call([AdminSeeder::class]);
-
-        $this->call([QuestionSeeder::class]);
+        $this->call([AdminSeeder::class, QuestionSeeder::class, FormSeeder::class]);
     }
 }
