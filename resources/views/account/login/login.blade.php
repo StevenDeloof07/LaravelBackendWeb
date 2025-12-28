@@ -32,8 +32,8 @@
 
     Nog geen account? <a href="{{ route("registerPage") }}">Registreer hier</a>
 
-    @if (session("error-message"))
-        <div class="error-message">{{ session("error-message") }}</div>
+    @if (session("failMessage"))
+        <div class="error-message">{{ session("failMessage") }}</div>
     @endif
 </body>
 </html>

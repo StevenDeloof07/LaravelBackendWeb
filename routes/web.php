@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\WelcomeController;
@@ -17,6 +18,11 @@ Route::get("/register", [WelcomeController::class, "register"])->name('registerP
 Route::post("/register", [AccountController::class, "store"])->name('registerAction');
 
 Route::post('/logout', [AccountController::class, "logout"])->name('logout');
+
+Route::prefix('/contact')->controller(ContactController::class)->group(function () {
+    route::get('/', 'index');
+    route::post('/', 'contact')->name('contactAdmin');
+});
 
 Route::prefix("FAQ",)->group(function () {
     Route::controller(QuestionController::class)->group(function () {

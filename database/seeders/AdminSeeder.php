@@ -26,10 +26,10 @@ class AdminSeeder extends Seeder
         DB::table("users")->insert([
             'id' => 42,
             'name' => "admin",
-            'email' => "admin@example.com",
+            'email' => "admin@ehb.be",
             'birthday' => "2004-04-06",
             'about_me' => "I'm the big boss admin! My name is Steven Bertsonn",
-            'password' => Hash::make('qazwsxedc')
+            'password' => Hash::make('Password!321')
         ]);
 
         DB::table("admin")->insert([
