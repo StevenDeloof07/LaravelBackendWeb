@@ -3,7 +3,8 @@ Welcome to my simple Laravel project!
 Here, I will show off my knowledge of the framework in a simple site.
 As I'm a computer science student, I obviously made mine a tweakers like forum, focussing on computers
 
-##installation##
+### installation
+
 To install this project, you need to have the following packages installed
 
 php 
