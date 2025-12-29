@@ -13,7 +13,7 @@ composer
 npm 
 
 
-Afterwards, you can use the following commands:
+#### Afterwards, you can use the following commands:
 
 git clone https://github.com/StevenDeloof07/LaravelBackendWeb
 
@@ -30,7 +30,7 @@ npm run build
 Afterwards, you should fill in the .env file with database and mail server information.
 Ensure you have a working database, and that the .env file gives the correct information for connecting to the database.
 
-Finally, you can migrate the database with 
+#### Finally, you can migrate the database with 
 
 php artisan key:generate
 
@@ -42,7 +42,7 @@ If you want to test this site without use of a local mailserver, you can use the
 https://mailpit.axllent.org/docs/install/
 
 
-Sources used:
+### Sources used:
 
 Faq.js
 https://www.delftstack.com/howto/javascript/prevent-form-submit-javascript/
