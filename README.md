@@ -80,3 +80,7 @@ https://gemini.google.com/share/2ed45321701b
 #### deviceSeeder
 
 https://laracasts.com/discuss/channels/laravel/how-to-seed-a-date-field
+
+#### DeviceController
+
+https://gemini.google.com/share/ea9c377d9f8d

@@ -26,6 +26,10 @@ class User extends Authenticatable
         'picture_link'
     ];
 
+    function id() {
+        return $this['id'];
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -55,5 +59,9 @@ class User extends Authenticatable
 
     public function isAdmin() {
         return $this->admin()->exists();
+    }
+
+    public function devices() {
+        return $this->belongsToMany(Device::class);
     }
 }

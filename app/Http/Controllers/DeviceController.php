@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Device;
+use App\Models\User;
 use App\validateRequest;
+use DB;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -53,6 +55,36 @@ class DeviceController extends Controller
         }
         Device::where('id', "=", $validated['id'])->delete();   
 
+        return redirect()->back();
+    }
+
+    function makeFavorite(Request $request) {
+        try {
+            $validated = $this->validateRequest($request, [
+                'device_id' => 'required|exists:devices,id',
+                'user_id' => 'required|exists:users,id' 
+            ]);
+        } catch (Exception $e) {
+            return redirect()->back()->with("error", "Er is iets fout gegaan, probeer later opnieuw.");
+        }
+
+        $user = User::find($validated['user_id']);
+        $user->devices()->attach($validated['device_id']);
+
+        return redirect()->back();
+    }
+
+    function removeFavorite(Request $request) {
+        try {
+            $validated = $this->validateRequest($request, [
+                'device_id' => 'required|exists:devices,id',
+                'user_id' => 'required|exists:users,id' 
+            ]);
+        } catch (Exception $e) {
+            return redirect()->back()->with("error", "Er is iets fout gegaan, probeer later opnieuw.");
+        }
+        $user = User::find($validated['user_id']);
+        $user->devices()->detach($validated['device_id']);
         return redirect()->back();
     }
 }
