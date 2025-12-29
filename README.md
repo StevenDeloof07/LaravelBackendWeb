@@ -15,7 +15,7 @@ npm
 
 #### Afterwards, you can use the following commands:
 
-git clone https://github.com/StevenDeloof07/LaravelBackendWeb
+`git clone https://github.com/StevenDeloof07/LaravelBackendWeb
 
 cd LaravelBackendWeb
 
@@ -26,6 +26,7 @@ composer install
 npm install
 
 npm run build
+`
 
 Afterwards, you should fill in the .env file with database and mail server information.
 Ensure you have a working database, and that the .env file gives the correct information for connecting to the database.
@@ -37,6 +38,10 @@ php artisan key:generate
 php artisan storage:link
 
 php artisan migrate:fresh --seed
+
+#### The server can the be ran with
+
+php artisan serve
 
 If you want to test this site without use of a local mailserver, you can use the mailpit command:
 https://mailpit.axllent.org/docs/install/
