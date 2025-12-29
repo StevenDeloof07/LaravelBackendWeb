@@ -11,6 +11,8 @@
     <nav>
         <a href="{{ route("home") }}" >Home</a>
 
+        <a href="{{ route('devices') }}">Apparaten</a>
+
         <!--Logic checked via Gemini, but written by me-->
         @auth
 

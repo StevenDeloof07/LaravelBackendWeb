@@ -75,3 +75,8 @@ https://laravel.com/docs/12.x/authentication
 #### WelcomeController.php:
 
 https://gemini.google.com/share/2ed45321701b
+
+
+#### deviceSeeder
+
+https://laracasts.com/discuss/channels/laravel/how-to-seed-a-date-field

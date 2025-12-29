@@ -7,7 +7,7 @@
 @section('content')
     <header>
         Welkom op mijn website over computers<br>
-        Nieuws
+        <h2>Nieuws</h2>
     </header>
     <ul>
         @foreach ($newsList as $newsitem)

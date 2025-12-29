@@ -3,14 +3,18 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
-use function PHPUnit\Framework\returnArgument;
 
 Route::get("/", [WelcomeController::class, "index"])->name("home");
+
+Route::prefix('devices')->controller(DeviceController::class)->group(function () {
+    Route::get('', 'index')->name('devices');
+});
 
 Route::prefix('login')->group(function () {
     Route::get('/', [WelcomeController::class, "login"])->name("login");
@@ -79,6 +83,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::controller(ContactController::class)->prefix("contact")->group(function () {
             Route::get('/', 'get')->name('GetContactForms');
             Route::post('/', 'respond')->name('respondToQuestion');
+        });
+
+        Route::controller(DeviceController::class)->prefix("devices")->group(function () {
+            Route::get('/', 'getManagement')->name('GetDeviceManagement');
+            Route::post('/', 'create')->name('addDevice');
+            Route::DELETE('/', 'remove')->name('deleteDevice');
         });
     });
 })
