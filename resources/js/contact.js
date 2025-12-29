@@ -1,4 +1,4 @@
-const forms = document.querySelectorAll('form');
+const forms = document.querySelectorAll('.anwser');
 
 for (let form of forms) {
     form.addEventListener('submit', (e) => {
