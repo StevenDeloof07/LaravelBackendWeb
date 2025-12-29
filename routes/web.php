@@ -15,7 +15,7 @@ Route::get("/", [WelcomeController::class, "index"])->name("home");
 Route::prefix('devices')->controller(DeviceController::class)->group(function () {
     Route::get('', 'index')->name('devices');
 
-    Route::middleware(['auth', 'admin'])->group(function () {
+    Route::middleware(['auth'])->group(function () {
         Route::post('/', 'makeFavorite')->name('favoriteDevice');
         Route::delete('/', 'removeFavorite')->name('removeFavorite');
     });
