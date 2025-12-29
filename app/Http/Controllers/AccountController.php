@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Device;
 use App\Models\User;
 use Exception;
 use Hash;
@@ -15,14 +16,19 @@ class AccountController extends Controller
         $user = User::where('id', $id)->first();
         if (empty($user)) return redirect()->back();
 
-        $data = [
-            "id" => $user['id'],
-            "username" => $user['name'],
-            "email" => $user['email'],
-            "birthday" => $user['birthday'],
-            "about_me" => $user['about_me'],
-            "picture_link" => $user['picture_link']
-        ];
+        $data = $user;
+
+        $devices = [];
+
+        $userDevices = $data->devices;
+        foreach ($userDevices as $device) {
+            array_push($devices, [
+                'name' => $device['name'],
+                'picture_link' => $device['picture_link']
+            ]);
+        }
+
+        if (!empty($devices))  $data['devices'] = $devices;
 
 
         return view('account.profile.about')->with("data", $data);

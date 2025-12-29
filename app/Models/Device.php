@@ -26,4 +26,9 @@ class Device extends Model
         return false;
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
 }
