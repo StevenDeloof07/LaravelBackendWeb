@@ -15,10 +15,15 @@ npm
 Afterwards, you can use the following commands:
 
 git clone https://github.com/StevenDeloof07/LaravelBackendWeb
+
 cd LaravelBackendWeb
+
 cp .env.example .env
+
 composer install
+
 npm install
+
 npm run build
 
 Afterwards, you should fill in the .env file with database and mail server information 
