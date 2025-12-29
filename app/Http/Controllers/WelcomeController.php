@@ -25,7 +25,7 @@ class WelcomeController extends Controller
             'password' => "required"
             ]);
         }   catch(Exception $e) {
-            return redirect()->back()->with(["failMessage" => "Vul alle gegevens in."]);
+            return redirect()->back()->with(["error" => "Vul alle gegevens in."]);
         }
 
         //code changed using https://gemini.google.com/share/2ed45321701b
@@ -35,9 +35,9 @@ class WelcomeController extends Controller
         #Checks user existence for the correct error message
 
         if (User::where('email', $authenticated['email'])->exists()) 
-            return redirect()->back()->with(["failMessage" => "Incorrect wachtwoord."]);
+            return redirect()->back()->with(["error" => "Incorrect wachtwoord."]);
         
-        return redirect()->back()->with(["failMessage" => "Account niet gevonden."]);
+        return redirect()->back()->with(["error" => "Account niet gevonden."]);
         
     }
 

@@ -18,6 +18,10 @@ Route::prefix('login')->group(function () {
 
     Route::controller(PasswordController::class)->prefix('reset')->group(function() {
         Route::get('/', 'changeView')->name("change_pass");
+        Route::post('/', 'changeRequest')->name('request_pass_change');
+
+        Route::get('/action/{token}', 'updateView')->name('change_pass_view');
+        Route::post('/action', 'change')->name('change_pass_action');
     });
 });
 

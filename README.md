@@ -50,23 +50,28 @@ https://mailpit.axllent.org/docs/install/
 
 ### Sources used:
 
-Faq.js:
+#### password reset logic: 
+
+https://1v0.net/blog/implementing-password-reset-in-laravel-12-without-packages/
+
+
+#### Faq.js:
 
 https://www.delftstack.com/howto/javascript/prevent-form-submit-javascript/
 
 https://www.w3schools.com/jsref/met_win_confirm.asp
 
-OrderShipped:
+#### OrderShipped:
 
 https://techsolutionstuff.com/post/laravel-12-send-email-tutphporial-step-by-step-guide
 
 
-AccountController:
+#### AccountController:
 
 https://kritimyantra.com/blogs/laravel-12-upload-images
 
 https://laravel.com/docs/12.x/authentication
 
-WelcomeController.php:
+#### WelcomeController.php:
 
 https://gemini.google.com/share/2ed45321701b

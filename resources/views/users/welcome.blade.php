@@ -20,4 +20,8 @@
             </li>
         @endforeach
     </ul>
+
+    @session('message')
+        <div>{{ $value }}</div>
+    @endsession
 @endsection
