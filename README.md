@@ -3,7 +3,7 @@ Welcome to my simple Laravel project!
 Here, I will show off my knowledge of the framework in a simple site.
 As I'm a computer science student, I obviously made mine a tweakers like forum, focussing on computers
 
-##installation
+##installation##
 To install this project, you need to have the following packages installed
 
 php 
@@ -26,13 +26,15 @@ npm install
 
 npm run build
 
-Afterwards, you should fill in the .env file with database and mail server information 
+Afterwards, you should fill in the .env file with database and mail server information.
 Ensure you have a working database, and that the .env file gives the correct information for connecting to the database.
 
 Finally, you can migrate the database with 
 
 php artisan key:generate
+
 php artisan storage:link
+
 php artisan migrate:fresh --seed
 
 If you want to test this site without use of a local mailserver, you can use the mailpit command:
