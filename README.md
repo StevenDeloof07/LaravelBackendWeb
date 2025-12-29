@@ -41,7 +41,8 @@ php artisan migrate:fresh --seed
 ~~~
 #### The server can the be ran with
 
-~~~php artisan serve~~~
+~~~ php artisan 
+~~~
 
 If you want to test this site without use of a local mailserver, you can use the mailpit command:
 https://mailpit.axllent.org/docs/install/
