@@ -37,7 +37,7 @@ php -r "file_exists('database/database.sqlite') || touch('database/database.sqli
 #### Finally, you can install the server and migrate the database with 
 ~~~
 composer run setup
-php artisan migrate:fresh seed
+php artisan migrate:fresh --seed
 ~~~
 
 
