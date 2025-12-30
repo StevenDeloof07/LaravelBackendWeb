@@ -50,6 +50,10 @@ php artisan serve
 If you want to test this site without use of a local mailserver, you can use the mailpit command:
 https://mailpit.axllent.org/docs/install/
 
+~~~
+#Runs the mail server
+mailpit
+~~~
 
 ### Sources used:
 
