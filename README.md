@@ -32,7 +32,7 @@ Alternatively, you can leave it on sqlite, and a sqlite database will be generat
 
 #### If you want to generate a sqlite database, you should use
 
-php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"
+php -r "file_exists('database/database.sqlite') || touch('database/database.sqlite');"
 
 #### Finally, you can install the server and migrate the database with 
 ~~~
