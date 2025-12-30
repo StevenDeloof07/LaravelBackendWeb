@@ -85,3 +85,8 @@ https://laracasts.com/discuss/channels/laravel/how-to-seed-a-date-field
 #### DeviceController
 
 https://gemini.google.com/share/ea9c377d9f8d
+
+#### composer.json
+
+AI used to make sure that a sqlite database file is created when the project is setup with a sqlite connection 
+https://gemini.google.com/share/e39b9abf5557 
