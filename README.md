@@ -8,8 +8,11 @@ As I'm a computer science student, I obviously made mine a tweakers like forum, 
 To install this project, you need to have the following packages installed
 
 php 
+
 php-xml
+
 composer
+
 npm 
 
 
