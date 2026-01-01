@@ -13,7 +13,9 @@ export default defineConfig({
                 'resources/js/profile.js', 
                 'resources/js/news.js',
                 'resources/js/contact.js',
-                'resources/js/FAQ.js'],
+                'resources/js/FAQ.js',
+                'resources/js/device.js'
+            ],
             refresh: true,
         }),
         tailwindcss(),

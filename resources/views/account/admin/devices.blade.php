@@ -27,26 +27,27 @@
         </table>
     </div>
     <div class="flex-form">
-        <form action="{{ route ('addDevice')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route ('addDevice')}}" id="addDevice" method="POST" enctype="multipart/form-data">
             @csrf
             <h2>Voeg een apparaat toe</h2>
             <div>
                 <label for="name">Naam:</label>
-                <input type="text" name="name">
+                <input type="text" id="name" name="name">
             </div>
             <div>
                 <label for="release_date">Uitgekomen in:</label>
-                <input type="date" name="release_date">
+                <input type="date" id="release_date" name="release_date">
             </div>
             <div>
                 <label for="description">Beschrijving</label>
-                <input type="text" name="description">
+                <input type="text" id="description" name="description">
             </div>
             <div>
                 <label for="picture">Foto apparaat</label><br>
-                <input type="file" name="picture">
+                <input type="file" id="picture" name="picture">
             </div>
             <input type="submit" value="Maak aan">
+            <div class="error-message" id="add-error"></div>
         </form>
         <form action="{{ route('deleteDevice') }}" method="post">
             @csrf
@@ -63,4 +64,5 @@
     @session('error')
         <div class="error-message">{{ $value }}</div>
     @endsession
+    @vite('resources/js/device.js')
 @endsection
