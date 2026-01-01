@@ -28,7 +28,7 @@
                             <br>
                             <br>
                             <button class="changeQuestion category{{ $category['id'] }}" id="{{ $question['id'] }}">Pas aan</button>
-                            <form action="{{ route('removeQuestion') }}" style="display:inline" method="post">
+                            <form class="removeQuestion" action="{{ route('removeQuestion') }}" style="display:inline" method="post">
                                 @csrf
                                 @method('delete')
                                 <input type="hidden" name="id" value="{{ $question['id'] }}">
@@ -42,30 +42,31 @@
     </ol>
     </div>
     <div class="flex-form">
-        <form action="{{ route('addCategory') }}" method="post">
+        <form action="{{ route('addCategory') }}" id="add_category_form" method="post">
             @csrf
             <h2>Categorie toevoegen</h2>
             <label for="name">Naam Category</label>
-            <input type="text" name="name">
+            <input type="text" id="add_category_name" name="name">
             <input type="submit" value="Categorie toevoegen">
+            <div class="error-message" id="add_category_error"></div>
         </form>
 
 
-        <form action="{{ route('changeCategory') }}" method="post">
+        <form action="{{ route('changeCategory') }}" id="change_category_form" method="post">
             <h2>Pas categorie aan</h2>
             @csrf
             @method('PUT')
-                    <select name="id">
-                        @foreach ($data as $category)
-                            <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
-                        @endforeach
-                    </select>
-                    <br>
-                    <label for="new_name">Nieuwe naam:</label><br>
-                    <input type="text" name="new_name">
-                
+            <select name="id">
+                @foreach ($data as $category)
+                    <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                @endforeach
+            </select>
+            <br>
+            <label for="new_name">Nieuwe naam:</label><br>
+            <input type="text" id="change_category_name" name="new_name">
             
             <input type="submit" value="Pas aan">
+            <div class="error-message" id="change_category_error"></div>
         </form>
 
         <form action="{{ route('removeCategory') }}" method="POST" id="deleteCategory">
@@ -80,16 +81,16 @@
             <input type="submit" value="Verwijder">
         </form>
 
-        <form action="{{ route("addQuestion") }}" method="post">
+        <form action="{{ route("addQuestion") }}" id="add_question_form" method="post">
             @csrf
             <h2>Vraag toevoegen</h2>
 
             <label for="question">Vraag</label>
-            <input type="text" name="question">
+            <input type="text" id="add_question" name="question">
             <br>
 
             <label for="anwser">Antwoord</label>
-            <input type="text" name="anwser">
+            <input type="text" id="add_anwser" name="anwser">
 
             <br>
 
@@ -100,6 +101,7 @@
                 @endforeach
             </select>
             <input type="submit" value="toevoegen">
+            <div class="error-message" id="add_question_error"></div>
         </form>
 
         <form action="{{ route('changeQuestion') }}" id="changeQuestion" style="display:none" method="post">
@@ -125,6 +127,7 @@
             </select>
 
             <input type="submit" value="Aanpassen">
+            <div class="error-message" id="change_question_error"></div>
         </form>
         @session('error')
                 <div class="error-message">{{ $value }}</div>
