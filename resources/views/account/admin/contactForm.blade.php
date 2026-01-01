@@ -27,11 +27,11 @@
                         {{ $form['anwsered'] ? "Ja" : "Nee"}}
                     </td>
                     <td>
-                        <form action="{{ route('respondToQuestion') }}" method="post">
+                        <form action="{{ route('respondToQuestion') }}" class="anwser" method="post">
                             @csrf
                             <input type="hidden" name="id" value="{{ $form['id'] }}">
                             <input type="hidden" name="anwser">
-                            <input type="submit" class="anwser" value="Stuur een antwoord">
+                            <input type="submit" value="Stuur een antwoord">
                         </form>
                     </td>
                 </tr>
