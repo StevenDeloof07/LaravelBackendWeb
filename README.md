@@ -15,19 +15,26 @@ composer
 
 npm 
 
-
-#### Afterwards, you can use the following commands:
+First, you clone the project using 
 
 ~~~
-
 git clone https://github.com/StevenDeloof07/LaravelBackendWeb
+~~~
 
-cd LaravelBackendWeb
+
+#### Afterwards, you can use the following command inside the root project directory (linux and mac):
+
+~~~
 
 cp .env.example .env
 
 ~~~
 
+#### Or in Windows
+
+~~~
+copy .env.example /env
+~~~
 
 Afterwards, you should fill in the .env file with database and mail server information.
 Ensure you have a working database, and that the .env file gives the correct information for connecting to the database.
