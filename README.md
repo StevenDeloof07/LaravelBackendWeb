@@ -33,7 +33,7 @@ cp .env.example .env
 #### Or in Windows
 
 ~~~
-copy .env.example /env
+copy .env.example env
 ~~~
 
 Afterwards, you should fill in the .env file with database and mail server information.
